@@ -30,22 +30,23 @@
 
                 <!-- Day Number -->
                 <TextView
-                    android:id="@+id/tvEventDay"
+                    android:id="@+id/eventDay"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:background="@drawable/circular_background"
+                    android:background="@drawable/square_background"
                     android:gravity="center"
                     android:text="10"
-                    android:textColor="@android:color/white"
+                    android:textColor="@android:color/black"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <!-- Event Title -->
                 <TextView
-                    android:id="@+id/tvEventTitle"
+                    android:id="@+id/eventTitle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:gravity="center"
                     android:paddingStart="16dp"
                     android:text="Midsemester Exam"
                     android:textColor="#000000"
@@ -61,23 +62,107 @@
                 android:paddingTop="8dp"
                 android:visibility="gone">
 
-                <TextView
-                    android:id="@+id/tvDate"
+                <!-- Date Row -->
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Date: January 10, 2024" />
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp">
 
-                <TextView
-                    android:id="@+id/tvTime"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Time: 3:00PM" />
+                    <TextView
+                        android:id="@+id/tvDateLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Date:"
+                        android:textStyle="bold"
+                        android:layout_marginEnd="8dp"
+                        />
 
-                <TextView
-                    android:id="@+id/tvLocation"
+                    <TextView
+                        android:id="@+id/eventDate"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="January 10, 2024"
+                         />
+
+                    <ImageView
+                        android:id="@+id/tvDateIcon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="Calendar Icon"
+                        android:src="@drawable/ic_calendar"
+                        app:tint="@color/black" />
+
+                </LinearLayout>
+
+                <!-- Time Row -->
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Location: SLT2, UWI Mona" />
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Time:"
+                        android:textStyle="bold"
+                        android:layout_marginEnd="8dp" />
+
+                    <TextView
+                        android:id="@+id/eventTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="3:00 PM" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="Time Icon"
+                        android:src="@drawable/ic_time"
+                        app:tint="@color/black" />
+                </LinearLayout>
+
+                <!-- Location Row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Location:"
+                        android:textStyle="bold"
+                        android:layout_marginEnd="8dp" />
+
+                    <TextView
+                        android:id="@+id/eventLocation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="SLT2, UWI Mona" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_location"
+                    android:contentDescription="Location Icon"
+                        app:tint="@color/black" />
+                </LinearLayout>
 
                 <!-- Event Type Row (Checkboxes) -->
                 <LinearLayout
@@ -85,6 +170,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:gravity="center"
                     android:orientation="horizontal">
 
                     <CheckBox
@@ -113,6 +199,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:gravity="center"
                     android:orientation="horizontal">
 
                     <TextView
@@ -135,6 +222,7 @@
                         android:text="No" />
                 </LinearLayout>
             </LinearLayout>
+
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

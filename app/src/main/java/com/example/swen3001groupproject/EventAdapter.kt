@@ -20,11 +20,11 @@ class EventAdapter(private val eventList: List<ChildEvent>) : RecyclerView.Adapt
         val event = eventList[position]
 
         // Set basic details (day, title, date, time, location)
-        holder.tvEventDay.text = event.day.toString()
-        holder.tvEventTitle.text = event.title
-        holder.tvDate.text = "Date: ${event.date}"
-        holder.tvTime.text = "Time: ${event.time}"
-        holder.tvLocation.text = "Location: ${event.location}"
+        holder.eventDay.text = event.day.toString()
+        holder.eventTitle.text = event.title
+        holder.eventData.text = event.date
+        holder.eventTime.text = event.time
+        holder.eventLocation.text = event.location
 
         // Set checkboxes for event type
         holder.checkIndoors.isChecked = event.isIndoors
@@ -52,11 +52,11 @@ class EventAdapter(private val eventList: List<ChildEvent>) : RecyclerView.Adapt
 
     // ViewHolder class that holds references to the views in the item layout
     class EventViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val tvEventDay: TextView = itemView.findViewById(R.id.tvEventDay)
-        val tvEventTitle: TextView = itemView.findViewById(R.id.tvEventTitle)
-        val tvDate: TextView = itemView.findViewById(R.id.tvDate)
-        val tvTime: TextView = itemView.findViewById(R.id.tvTime)
-        val tvLocation: TextView = itemView.findViewById(R.id.tvLocation)
+        val eventDay: TextView = itemView.findViewById(R.id.eventDay)
+        val eventTitle: TextView = itemView.findViewById(R.id.eventTitle)
+        val eventData: TextView = itemView.findViewById(R.id.eventDate)
+        val eventTime: TextView = itemView.findViewById(R.id.eventTime)
+        val eventLocation: TextView = itemView.findViewById(R.id.eventLocation)
 
         val checkIndoors: CheckBox = itemView.findViewById(R.id.checkIndoors)
         val checkOutdoors: CheckBox = itemView.findViewById(R.id.checkOutdoors)
