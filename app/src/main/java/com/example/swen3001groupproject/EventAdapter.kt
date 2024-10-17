@@ -6,7 +6,7 @@ import android.widget.CheckBox
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class EventAdapter(private val eventList: List<ChildEvent>) : RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
+class EventAdapter(private var eventList: List<ChildEvent>) : RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
 
     // Track which events are expanded (true means expanded, false means collapsed)
     private val expandedState: BooleanArray = BooleanArray(eventList.size)
@@ -22,7 +22,7 @@ class EventAdapter(private val eventList: List<ChildEvent>) : RecyclerView.Adapt
         // Set basic details (day, title, date, time, location)
         holder.eventDay.text = event.day.toString()
         holder.eventTitle.text = event.title
-        holder.eventData.text = event.date
+        holder.eventData.text = event.date.toString()
         holder.eventTime.text = event.time
         holder.eventLocation.text = event.location
 
@@ -48,6 +48,11 @@ class EventAdapter(private val eventList: List<ChildEvent>) : RecyclerView.Adapt
 
     override fun getItemCount(): Int {
         return eventList.size
+    }
+
+    fun updateEvents(newEvents: List<ChildEvent>) {
+        eventList = newEvents
+        notifyDataSetChanged()
     }
 
     // ViewHolder class that holds references to the views in the item layout
