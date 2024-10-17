@@ -47,10 +47,16 @@ class AddChildEvent : AppCompatActivity() {
         add_button = findViewById(R.id.button2)
         add_button.setOnClickListener {
 
-            val newEvent = ChildEvent(17, eventTitle, eventDate, eventTime, eventLocation, indoor, outdoor, online, true)
+
 
             val intent = Intent(this, ChildEventsActivity::class.java)
-            intent.putExtra("new_event", newEvent)
+            intent.putExtra("eventTitle", eventTitle)
+            intent.putExtra("eventDate", eventDate)
+            intent.putExtra("eventTime", eventTime)
+            intent.putExtra("eventLocation", eventLocation)
+            intent.putExtra("indoor", indoor)
+            intent.putExtra("outdoor", outdoor)
+            intent.putExtra("online", online)
             startActivity(intent)
             this.finish()
         }

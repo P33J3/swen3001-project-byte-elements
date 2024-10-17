@@ -23,8 +23,7 @@ class ChildEventsActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        //val intent2 = intent
-        //val new_event = intent2.getStringExtra("new_event")
+
 
         val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
@@ -34,7 +33,15 @@ class ChildEventsActivity : AppCompatActivity() {
         eventList.add(ChildEvent(13, "Dad's Birthday Party", "January 13, 2024", "5:00PM", "Home", false, true, false, false))
         eventList.add(ChildEvent(23, "Track Meet", "January 23, 2024", "10:00AM", "National Stadium", false, true, false, true))
 
-        //eventList.add(new_event)
+        val intent2 = intent
+        val eventTitle = intent2.getStringExtra("eventTitle")
+        val eventDate = intent2.getStringExtra("eventDate")
+        val eventTime = intent2.getStringExtra("eventTime")
+        val eventLocation = intent2.getStringExtra("eventLocation")
+        val indoor = intent2.getStringExtra("indoor").toBoolean()
+        val outdoor = intent2.getStringExtra("outdoor").toBoolean()
+        val online = intent2.getStringExtra("online").toBoolean()
+        eventList.add(ChildEvent(17, eventTitle, eventDate, eventTime, eventLocation, indoor, outdoor, online, true))
 
 
 
