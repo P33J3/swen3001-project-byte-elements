@@ -9,14 +9,28 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_height="match_parent"
         android:layout_margin="8dp"
         android:elevation="4dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.125">
+
+        <EditText
+            android:id="@+id/NewTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="no"
+            android:gravity="center"
+            android:inputType="text"
+            android:padding="12dp"
+            android:text="@string/title"
+            android:textColor="#000000"
+            android:textSize="18sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -24,17 +38,130 @@
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
-            <!-- Event Title -->
             <TextView
-                android:id="@+id/eventTitle"
+                android:id="@+id/NewDate"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:paddingStart="16dp"
-                android:text="Midsemester Exam"
+                android:padding="12dp"
+                android:text="@string/date"
                 android:textColor="#000000"
                 android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/addEventDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:autofillHints="no"
+                android:gravity="center"
+                android:inputType="text"
+                android:text="January 10, 2024"
+                />
+
+            <ImageView
+                android:id="@+id/tvDateIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/calendar_icon"
+                android:src="@drawable/ic_calendar"
+                app:tint="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Time:"
+                android:textStyle="bold"
+                android:layout_marginEnd="8dp" />
+
+            <EditText
+                android:id="@+id/addEventTime"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:autofillHints="no"
+                android:gravity="center"
+                android:inputType="text"
+                android:text="3:00 PM" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/time_icon"
+                android:src="@drawable/ic_time"
+                app:tint="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Location:"
+                android:textStyle="bold"
+                android:layout_marginEnd="8dp" />
+
+            <EditText
+                android:id="@+id/addEventLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:autofillHints="no"
+                android:gravity="center"
+                android:text="SLT2, UWI Mona" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_location"
+                android:contentDescription="Location Icon"
+                app:tint="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/eventTypeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/addCheckIndoors"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Indoors" />
+
+            <CheckBox
+                android:id="@+id/addCheckOutdoors"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Outdoors" />
+
+            <CheckBox
+                android:id="@+id/addCheckOnline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Online" />
         </LinearLayout>
 
         <Button
@@ -42,13 +169,14 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:background="@drawable/add_button"
+            android:layout_margin="20dp"
+            android:layout_gravity="center"
             android:text="@string/add_button"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.957" />
-
 
     </LinearLayout>
 

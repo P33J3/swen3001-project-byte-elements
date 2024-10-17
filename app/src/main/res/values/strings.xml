@@ -3,4 +3,7 @@
     <string name="button">+</string>
     <string name="add_button">Add</string>
     <string name="title">Title</string>
+    <string name="calendar_icon">Calendar Icon</string>
+    <string name="date">Date</string>
+    <string name="time_icon">Time Icon</string>
 </resources>

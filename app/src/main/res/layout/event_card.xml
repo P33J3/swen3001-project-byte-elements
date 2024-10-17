@@ -94,7 +94,7 @@
                         android:id="@+id/tvDateIcon"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:contentDescription="Calendar Icon"
+                        android:contentDescription="@string/calendar_icon"
                         android:src="@drawable/ic_calendar"
                         app:tint="@color/black" />
 
@@ -127,7 +127,7 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:contentDescription="Time Icon"
+                        android:contentDescription="@string/time_icon"
                         android:src="@drawable/ic_time"
                         app:tint="@color/black" />
                 </LinearLayout>
