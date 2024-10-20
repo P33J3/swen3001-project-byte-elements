@@ -6,4 +6,5 @@
     <string name="calendar_icon">Calendar Icon</string>
     <string name="date">Date</string>
     <string name="time_icon">Time Icon</string>
+    <string name="google_maps_api_key">AIzaSyBoiAEMiskN7S-wM6at6_xhE5C8UKs-2KE</string>
 </resources>
