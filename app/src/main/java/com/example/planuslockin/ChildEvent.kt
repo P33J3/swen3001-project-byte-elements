@@ -1,4 +1,4 @@
-package com.example.swen3001groupproject
+package com.example.planuslockin
 
 import java.text.ParseException
 import java.text.SimpleDateFormat

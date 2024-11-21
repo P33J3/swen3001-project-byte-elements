@@ -1,4 +1,4 @@
-package com.example.swen3001groupproject
+package com.example.planuslockin
 
 import android.content.Intent
 import android.os.Bundle
@@ -24,7 +24,7 @@ class ChildEventsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_child_events)
         adapter = EventAdapter(eventList)
 
         add_event_button = findViewById(R.id.button)

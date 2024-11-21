@@ -1,4 +1,4 @@
-package com.example.swen3001groupproject
+package com.example.planuslockin
 
 import android.content.Intent
 import android.os.Bundle

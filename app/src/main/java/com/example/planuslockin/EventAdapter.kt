@@ -1,4 +1,4 @@
-package com.example.swen3001groupproject
+package com.example.planuslockin
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup

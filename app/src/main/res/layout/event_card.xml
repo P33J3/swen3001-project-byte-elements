@@ -88,7 +88,7 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:text="January 10, 2024"
-                         />
+                        />
 
                     <ImageView
                         android:id="@+id/tvDateIcon"
@@ -160,7 +160,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_location"
-                    android:contentDescription="Location Icon"
+                        android:contentDescription="Location Icon"
                         app:tint="@color/black" />
                 </LinearLayout>
 
