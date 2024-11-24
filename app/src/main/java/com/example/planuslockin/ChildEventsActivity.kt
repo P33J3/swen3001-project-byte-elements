@@ -8,6 +8,11 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
@@ -21,6 +26,9 @@ class ChildEventsActivity : AppCompatActivity() {
 
     lateinit var selectedDate: TextView
     lateinit var btnOpenCalendar: Button
+
+//    val database : FirebaseDatabase = FirebaseDatabase.getInstance()
+//    val reference : DatabaseReference = database.reference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,6 +55,8 @@ class ChildEventsActivity : AppCompatActivity() {
             showDatePickerDialog()
         }
 
+
+//        retrieveDataFromDatabase()
 
         // Dummy event data
         eventList.add(ChildEvent(10, "Midsemester Exam", "2024-01-10", "3:00PM", "SLT2, UWI Mona", true, false, false, true))
@@ -106,6 +116,30 @@ class ChildEventsActivity : AppCompatActivity() {
             }
             .take(count) // Get the closest `count` number of events
     }
+
+//    fun retrieveDataFromDatabase() {
+//        reference.addValueEventListener(object : ValueEventListener {
+//            override fun onDataChange(snapshot: DataSnapshot) {
+//                //ensures list is not duplicated upon change in data
+//                eventList.clear()
+//
+//                for (eachevent in snapshot.children){
+//
+//                    val event = eachevent.getValue(ChildEvent::class.java)
+//
+//                    if (event != null) {
+//                        eventList.add(event)
+//                    }
+//                }
+//
+//
+//            }
+//
+//            override fun onCancelled(error: DatabaseError) {
+//                TODO("Not yet implemented")
+//            }
+//        })
+//    }
 
 
 
