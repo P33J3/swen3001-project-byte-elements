@@ -6,4 +6,6 @@
     <string name="calendar_icon">Calendar Icon</string>
     <string name="date">Date</string>
     <string name="time_icon">Time Icon</string>
+    <string name="drop_menu">Dropdown Menu</string>
+    <string name="select">Select Item</string>
 </resources>
