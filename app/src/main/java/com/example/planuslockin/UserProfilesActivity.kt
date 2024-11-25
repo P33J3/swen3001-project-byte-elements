@@ -78,7 +78,7 @@ class UserProfilesActivity : AppCompatActivity() {
     }
 
     private fun displayProfiles() {
-        val adapter = Adapter(profiles)
+        val adapter = Adapter(this, profiles)
         recylcerView.adapter = adapter
     }
 }
