@@ -66,6 +66,7 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.play.services.maps)
+    implementation(libs.play.services.location)
     implementation(libs.firebase.auth.ktx)
     implementation(libs.firebase.auth)
     implementation(libs.androidx.foundation.layout.android)
