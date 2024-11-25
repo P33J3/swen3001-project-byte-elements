@@ -1,19 +1,21 @@
 package com.example.planuslockin
 
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import android.widget.TextView
-import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 
-class Adapter(private val context: Context, private val profileList: List<Map<String, Any>>) : RecyclerView.Adapter<Adapter.MyViewHolder>() {
+class Adapter(private val context: Context,
+              private val profileList: List<Map<String, Any>>,
+              private val onProfileClickListener: UserProfilesActivity
+) : RecyclerView.Adapter<Adapter.MyViewHolder>() {
 
-//    private val profiles = mutableListOf<Map<String, Any>>()
-//    lateinit var context: Context
+
+    interface OnProfileClickListener {
+        fun onProfileClick(profileId: String, pin: String, role: String)
+    }
 
 
 
@@ -33,7 +35,11 @@ class Adapter(private val context: Context, private val profileList: List<Map<St
 
 
         holder.itemView.setOnClickListener {
-            verifyPIN(profile)
+            val profileId = profile["id"].toString()
+            val pin = profile["pin"].toString()
+            val role = profile["role"].toString()
+            onProfileClickListener.onProfileClick(profileId, pin, role)
+//            verifyPIN(profile)
 
         }
 
@@ -46,57 +52,6 @@ class Adapter(private val context: Context, private val profileList: List<Map<St
         val profileRole : TextView = itemView.findViewById(R.id.profile_role)
     }
 
-    private fun verifyPIN(profile: Map<String, Any>) {
-        // Create a dialog to ask for the pin
-        val pinAlert = AlertDialog.Builder(context)
-        pinAlert.setTitle("Enter Pin")
 
-        // Set up the input field
-        val input = EditText(context)
-        pinAlert.setView(input)
-
-        pinAlert.setPositiveButton("OK") { dialog, _ ->
-            val enteredPin = input.text.toString()
-
-            // Check if the entered pin is empty
-            if (enteredPin.isEmpty()) {
-                // Show a message if the pin is empty
-                AlertDialog.Builder(context)
-                    .setTitle("Error")
-                    .setMessage("Pin cannot be empty. Please enter a valid pin.")
-                    .setPositiveButton("OK", null)
-                    .show()
-            } else {
-                val storedPin = profile["pin"].toString() // Assume the pin is stored in the profile data
-
-                // Check if the entered pin matches the profile's pin
-                if (enteredPin == storedPin) {
-                    // If correct, start the appropriate activity
-                    if (profile["role"] == "Parent") {
-//                    val intent = Intent(context, ParentEventsActivity::class.java)
-//                    context.startActivity(intent)
-                    } else if (profile["role"] == "Child") {
-                        val intent = Intent(context, ChildEventsActivity::class.java)
-                        context.startActivity(intent)
-                    }
-                } else {
-                    // If incorrect, show an error message
-                    AlertDialog.Builder(context)
-                        .setTitle("Error")
-                        .setMessage("Incorrect pin entered. Please try again.")
-                        .setPositiveButton("OK", null)
-                        .show()
-                }
-            }
-
-            dialog.dismiss()
-        }
-
-        pinAlert.setNegativeButton("Cancel") { dialog, _ ->
-            dialog.cancel() // Close the dialog without doing anything
-        }
-
-        pinAlert.show()
-    }
 
 }
