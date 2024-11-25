@@ -174,20 +174,20 @@
                     <CheckBox
                         android:id="@+id/checkIndoors"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="48dp"
                         android:text="Indoors" />
 
                     <CheckBox
                         android:id="@+id/checkOutdoors"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="48dp"
                         android:layout_marginStart="16dp"
                         android:text="Outdoors" />
 
                     <CheckBox
                         android:id="@+id/checkOnline"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="48dp"
                         android:layout_marginStart="16dp"
                         android:text="Online" />
                 </LinearLayout>
@@ -208,16 +208,37 @@
                     <CheckBox
                         android:id="@+id/checkYes"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="48dp"
                         android:layout_marginStart="16dp"
                         android:text="Yes" />
 
                     <CheckBox
                         android:id="@+id/checkNo"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="48dp"
                         android:layout_marginStart="16dp"
                         android:text="No" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="20dp">
+
+                    <Button
+                        android:id="@+id/edit"
+                        android:layout_width="108dp"
+                        android:layout_height="wrap_content"
+                        android:text="Edit" />
+
+                    <Button
+                        android:id="@+id/delete"
+                        android:layout_width="108dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="Delete" />
+
+
                 </LinearLayout>
             </LinearLayout>
 

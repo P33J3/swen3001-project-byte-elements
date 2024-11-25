@@ -1,7 +1,9 @@
 package com.example.planuslockin
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.CheckBox
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -35,6 +37,12 @@ class EventAdapter(private var eventList: List<ChildEvent>) : RecyclerView.Adapt
         holder.checkYes.isChecked = event.shareWithKids
         holder.checkNo.isChecked = !event.shareWithKids
 
+        // Set edit button for event
+        holder.editButton.setOnClickListener {
+            val intent = Intent(holder.itemView.context, EditEventsActivity::class.java)
+            intent.putExtra("event", event) // Pass the event object (make sure it implements Serializable or Parcelable)
+            holder.itemView.context.startActivity(intent)
+        }
         // Handle expanding/collapsing the details layout
         val isExpanded = expandedState[position]
         holder.expandableLayout.visibility = if (isExpanded) View.VISIBLE else View.GONE
@@ -69,7 +77,7 @@ class EventAdapter(private var eventList: List<ChildEvent>) : RecyclerView.Adapt
 
         val checkYes: CheckBox = itemView.findViewById(R.id.checkYes)
         val checkNo: CheckBox = itemView.findViewById(R.id.checkNo)
-
+        val editButton: Button = itemView.findViewById(R.id.edit)
         val expandableLayout: View = itemView.findViewById(R.id.expandableLayout)
     }
 }

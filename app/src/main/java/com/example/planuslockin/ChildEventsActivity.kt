@@ -18,6 +18,7 @@ class ChildEventsActivity : AppCompatActivity() {
     val eventList = ArrayList<ChildEvent>()
     lateinit var adapter: EventAdapter
     lateinit var add_event_button: Button
+    lateinit var  edit_button:Button
 
     lateinit var selectedDate: TextView
     lateinit var btnOpenCalendar: Button
@@ -32,8 +33,6 @@ class ChildEventsActivity : AppCompatActivity() {
             val intent = Intent(this, AddChildEvent::class.java)
             startActivity(intent)
         }
-
-
 
         val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
