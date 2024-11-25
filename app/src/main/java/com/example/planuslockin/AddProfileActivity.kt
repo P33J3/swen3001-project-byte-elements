@@ -70,6 +70,7 @@ class AddProfileActivity : AppCompatActivity() {
                             }
                             .addOnFailureListener {
                                 Toast.makeText(this, "Failed to add profile" , Toast.LENGTH_SHORT).show()
+                                Log.d("MyTag", "The USERID is: " + userID);
                                 Log.d("MyTag", "The name is: " + name);
                                 Log.d("MyTag", "The pin is: " + pin);
                                 Log.d("MyTag", "The role is: " + selectedText);
