@@ -162,6 +162,7 @@ class ChildEventsActivity : AppCompatActivity() {
         val userData = getUserData()
         if (userData != null) {
             val (userId, profileId) = userData
+            Log.d("FirestoreData", "User ID: $userId, ProfileID: $profileId")
             // Now use the userId and profileId to query Firebase or make network requests
             db.collection("users")
                 .document(userId)

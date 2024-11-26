@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.InputType
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -67,9 +68,12 @@ class UserProfilesActivity : AppCompatActivity() {
                 profiles.clear()
                 for (document in result) {
                     val profile = document.data
+                    profile["id"] = document.id
                     profiles.add(profile)
                 }
                 displayProfiles()
+                // Log the list of profiles fetched
+                Log.d("FirestoreData", "Fetched Profiles: ${profiles.joinToString()}")
             }
             .addOnFailureListener {
                 Toast.makeText(this, "Failed to fetch profiles", Toast.LENGTH_SHORT).show()
@@ -79,8 +83,11 @@ class UserProfilesActivity : AppCompatActivity() {
 
     private fun displayProfiles() {
         val userId = firebaseAuth.currentUser?.uid
+        // Log the profiles list before passing to the adapter
+        Log.d("UserProfiles", "Profiles to display: $profiles")
         val adapter = userId?.let { Adapter(this, profiles, this, it) }
         recylcerView.adapter = adapter
+        adapter?.updateProfiles(profiles)
     }
 
     fun onProfileClick(userId : String, profileId: String, pin:  String, role: String) {
@@ -105,6 +112,7 @@ class UserProfilesActivity : AppCompatActivity() {
 
         pinAlert.setPositiveButton("OK") { dialog, _ ->
             val enteredPin = pinEditText.text.toString()
+            Log.d("FirestoreData", "VerifyPIN Function - $profileId")
 
             // Check if the entered pin is empty
             if (enteredPin.isEmpty()) {
@@ -150,6 +158,7 @@ class UserProfilesActivity : AppCompatActivity() {
     private fun saveUserData(userId: String, profileId: String) {
         val sharedPreferences = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
+        editor.clear()
         editor.putString("user_id", userId)
         editor.putString("profile_id", profileId)
         editor.apply()
