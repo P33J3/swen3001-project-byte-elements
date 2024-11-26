@@ -9,12 +9,13 @@ import androidx.recyclerview.widget.RecyclerView
 
 class Adapter(private val context: Context,
               private val profileList: List<Map<String, Any>>,
-              private val onProfileClickListener: UserProfilesActivity
+              private val onProfileClickListener: UserProfilesActivity,
+                private val userId: String
 ) : RecyclerView.Adapter<Adapter.MyViewHolder>() {
 
 
     interface OnProfileClickListener {
-        fun onProfileClick(profileId: String, pin: String, role: String)
+        fun onProfileClick(userId:String, profileId: String, pin: String, role: String)
     }
 
 
@@ -38,7 +39,8 @@ class Adapter(private val context: Context,
             val profileId = profile["id"].toString()
             val pin = profile["pin"].toString()
             val role = profile["role"].toString()
-            onProfileClickListener.onProfileClick(profileId, pin, role)
+            val userId = userId
+            onProfileClickListener.onProfileClick(userId,profileId, pin, role)
 //            verifyPIN(profile)
 
         }
