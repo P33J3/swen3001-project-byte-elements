@@ -13,12 +13,24 @@
         android:layout_margin="8dp"
         android:elevation="4dp"
         android:orientation="vertical"
+        android:padding="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.125">
+        app:layout_constraintTop_toTopOf="parent">
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:gravity="center_vertical"
+           android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="@string/title"
+            android:textStyle="bold" />
+
 
         <EditText
             android:id="@+id/NewTitle"
@@ -28,9 +40,9 @@
             android:gravity="center"
             android:inputType="text"
             android:padding="12dp"
-            android:text="@string/title"
-            android:textColor="#000000"
+            android:hint="Title"
             android:textSize="18sp" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -39,15 +51,12 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/NewDate"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:padding="12dp"
-                android:text="@string/date"
-                android:textColor="#000000"
-                android:textSize="18sp" />
+                android:layout_marginEnd="8dp"
+                android:text="Date:"
+                android:textStyle="bold" />
+
 
             <EditText
                 android:id="@+id/addEventDate"
@@ -58,8 +67,8 @@
                 android:autofillHints="no"
                 android:gravity="center"
                 android:inputType="text"
-                android:text="January 10, 2024"
-                />
+                android:minHeight="48dp"
+                android:hint="yyyy-mm-dd"/>
 
             <ImageView
                 android:id="@+id/tvDateIcon"
@@ -73,17 +82,17 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:gravity="center_vertical"
+            android:orientation="horizontal"
             android:paddingTop="4dp"
             android:paddingBottom="4dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
                 android:text="Time:"
-                android:textStyle="bold"
-                android:layout_marginEnd="8dp" />
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/addEventTime"
@@ -92,8 +101,11 @@
                 android:layout_weight="1"
                 android:autofillHints="no"
                 android:gravity="center"
-                android:inputType="text"
-                android:text="3:00 PM" />
+                android:inputType="none"
+                android:minHeight="48dp"
+                android:focusable="false"
+                android:clickable="true"
+                android:hint="Add Time"/>
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -106,17 +118,17 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:gravity="center_vertical"
+            android:orientation="horizontal"
             android:paddingTop="4dp"
             android:paddingBottom="4dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
                 android:text="Location:"
-                android:textStyle="bold"
-                android:layout_marginEnd="8dp" />
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/addEventLocation"
@@ -125,13 +137,14 @@
                 android:layout_weight="1"
                 android:autofillHints="no"
                 android:gravity="center"
-                android:text="SLT2, UWI Mona" />
+                android:minHeight="48dp"
+                android:hint="Add Location" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_location"
                 android:contentDescription="Location Icon"
+                android:src="@drawable/ic_location"
                 app:tint="@color/black" />
         </LinearLayout>
 
@@ -141,36 +154,46 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:gravity="center"
+            android:minHeight="48dp"
             android:orientation="horizontal">
 
             <CheckBox
                 android:id="@+id/addCheckIndoors"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:padding="8dp"
                 android:text="Indoors" />
 
-            <CheckBox
-                android:id="@+id/addCheckOutdoors"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="Outdoors" />
 
             <CheckBox
                 android:id="@+id/addCheckOnline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
+                android:minHeight="48dp"
+                android:padding="5dp"
                 android:text="Online" />
+
+            <CheckBox
+                android:id="@+id/addKids"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:minHeight="48dp"
+                android:padding="5dp"
+                android:text="Share Event" />
         </LinearLayout>
+
+
 
         <Button
             android:id="@+id/button2"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/add_button"
-            android:layout_margin="20dp"
             android:layout_gravity="center"
+            android:layout_margin="20dp"
+            android:background="@drawable/add_button"
             android:text="@string/add_button"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

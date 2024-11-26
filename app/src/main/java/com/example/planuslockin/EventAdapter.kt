@@ -1,10 +1,13 @@
 package com.example.planuslockin
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class EventAdapter(private var eventList: List<ChildEvent>) : RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
 
@@ -17,32 +20,38 @@ class EventAdapter(private var eventList: List<ChildEvent>) : RecyclerView.Adapt
     }
 
     override fun onBindViewHolder(holder: EventViewHolder, position: Int) {
-        val event = eventList[position]
+        if (eventList.isNotEmpty()) {
 
-        // Set basic details (day, title, date, time, location)
-        holder.eventDay.text = event.day.toString()
-        holder.eventTitle.text = event.title
-        holder.eventData.text = event.date.toString()
-        holder.eventTime.text = event.time
-        holder.eventLocation.text = event.location
+            val event = eventList[position]
 
-        // Set checkboxes for event type
-        holder.checkIndoors.isChecked = event.isIndoors
-        holder.checkOutdoors.isChecked = event.isOutdoors
-        holder.checkOnline.isChecked = event.isOnline
+            // Set basic details (day, title, date, time, location)
+            val dateFormat =
+                SimpleDateFormat("d", Locale.getDefault()) // "d" gives us the day number
+            holder.eventDay.text = event.date?.let { dateFormat.format(it) }
 
-        // Set checkboxes for sharing with kids
-        holder.checkYes.isChecked = event.shareWithKids
-        holder.checkNo.isChecked = !event.shareWithKids
+            holder.eventTitle.text = event.title
 
-        // Handle expanding/collapsing the details layout
-        val isExpanded = expandedState[position]
-        holder.expandableLayout.visibility = if (isExpanded) View.VISIBLE else View.GONE
+            val fullDateFormat = SimpleDateFormat("MMMM dd, yyyy", Locale.getDefault())
+            holder.eventDate.text = event.date?.let { fullDateFormat.format(it) }
+            holder.eventTime.text = event.time
+            holder.eventLocation.text = event.location
 
-        // Toggle the expansion state on click
-        holder.itemView.setOnClickListener {
-            expandedState[position] = !expandedState[position]
-            notifyItemChanged(position)  // Notify adapter to refresh this item
+            // Set checkboxes for event type
+            holder.checkIndoors.isChecked = event.isIndoors
+            holder.checkOnline.isChecked = event.isOnline
+
+            // Set checkboxes for sharing with kids
+            holder.checkKids.isChecked = event.shareEvent
+
+            // Handle expanding/collapsing the details layout
+//            val isExpanded = expandedState[position]
+//            holder.expandableLayout.visibility = if (isExpanded) View.VISIBLE else View.GONE
+
+            // Toggle the expansion state on click
+            holder.itemView.setOnClickListener {
+                expandedState[position] = !expandedState[position]
+                notifyItemChanged(position)  // Notify adapter to refresh this item
+            }
         }
     }
 
@@ -59,16 +68,14 @@ class EventAdapter(private var eventList: List<ChildEvent>) : RecyclerView.Adapt
     class EventViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val eventDay: TextView = itemView.findViewById(R.id.eventDay)
         val eventTitle: TextView = itemView.findViewById(R.id.eventTitle)
-        val eventData: TextView = itemView.findViewById(R.id.eventDate)
+        val eventDate: TextView = itemView.findViewById(R.id.eventDate)
         val eventTime: TextView = itemView.findViewById(R.id.eventTime)
         val eventLocation: TextView = itemView.findViewById(R.id.eventLocation)
 
-        val checkIndoors: CheckBox = itemView.findViewById(R.id.checkIndoors)
-        val checkOutdoors: CheckBox = itemView.findViewById(R.id.checkOutdoors)
-        val checkOnline: CheckBox = itemView.findViewById(R.id.checkOnline)
+        val checkIndoors: CheckBox = itemView.findViewById(R.id.cardCheckIndoors)
+        val checkOnline: CheckBox = itemView.findViewById(R.id.cardCheckOnline)
 
-        val checkYes: CheckBox = itemView.findViewById(R.id.checkYes)
-        val checkNo: CheckBox = itemView.findViewById(R.id.checkNo)
+        val checkKids: CheckBox = itemView.findViewById(R.id.checkKids)
 
         val expandableLayout: View = itemView.findViewById(R.id.expandableLayout)
     }

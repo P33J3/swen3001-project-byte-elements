@@ -1,5 +1,6 @@
 package com.example.planuslockin
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.InputType
@@ -77,15 +78,16 @@ class UserProfilesActivity : AppCompatActivity() {
     }
 
     private fun displayProfiles() {
-        val adapter = Adapter(this, profiles, this)
+        val userId = firebaseAuth.currentUser?.uid
+        val adapter = userId?.let { Adapter(this, profiles, this, it) }
         recylcerView.adapter = adapter
     }
 
-    fun onProfileClick(profileId: String, pin:  String, role: String) {
-        verifyPIN(profileId, pin, role)
+    fun onProfileClick(userId : String, profileId: String, pin:  String, role: String) {
+        verifyPIN(userId, profileId, pin, role)
     }
 
-    private fun verifyPIN(profileId: String, pin: String, role: String) {
+    private fun verifyPIN( userId: String, profileId: String, pin: String, role: String) {
         // Create a dialog to ask for the pin
         val pinAlert = AlertDialog.Builder(this)
         // Set up the input field
@@ -116,6 +118,7 @@ class UserProfilesActivity : AppCompatActivity() {
 
                 // Check if the entered pin matches the profile's pin
                 if (enteredPin == pin) {
+                    saveUserData(userId, profileId)
                     // If correct, start the appropriate activity
                     if (role == "Parent") {
 //                    val intent = Intent(context, ParentEventsActivity::class.java)
@@ -142,5 +145,13 @@ class UserProfilesActivity : AppCompatActivity() {
         }
 
         pinAlert.show()
+    }
+
+    private fun saveUserData(userId: String, profileId: String) {
+        val sharedPreferences = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putString("user_id", userId)
+        editor.putString("profile_id", profileId)
+        editor.apply()
     }
 }
