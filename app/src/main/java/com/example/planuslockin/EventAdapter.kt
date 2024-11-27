@@ -1,13 +1,16 @@
 package com.example.planuslockin
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.CheckBox
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import java.text.SimpleDateFormat
 import java.util.Locale
+
 
 class EventAdapter(private var eventList: List<ChildEvent>) : RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
 
@@ -52,6 +55,13 @@ class EventAdapter(private var eventList: List<ChildEvent>) : RecyclerView.Adapt
                 expandedState[position] = !expandedState[position]
                 notifyItemChanged(position)  // Notify adapter to refresh this item
             }
+            holder.editEventBtn.setOnClickListener{
+                val context = holder.itemView.context
+                val intent = Intent(context, EditEventsActivity::class.java)
+                intent.putExtra("event",event) // Pass the event object
+                context.startActivity(intent)
+            }
+
         }
     }
 
@@ -76,7 +86,7 @@ class EventAdapter(private var eventList: List<ChildEvent>) : RecyclerView.Adapt
         val checkOnline: CheckBox = itemView.findViewById(R.id.cardCheckOnline)
 
         val checkKids: CheckBox = itemView.findViewById(R.id.checkKids)
-
+        val editEventBtn: Button =itemView.findViewById(R.id.editbtn)
         val expandableLayout: View = itemView.findViewById(R.id.expandableLayout)
     }
 }
