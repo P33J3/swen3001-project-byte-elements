@@ -8,9 +8,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class Adapter(private val context: Context,
-              private val profileList: List<Map<String, Any>>,
+              private var profileList: List<Map<String, Any>>,
               private val onProfileClickListener: UserProfilesActivity,
-                private val userId: String
+              private val userId: String
 ) : RecyclerView.Adapter<Adapter.MyViewHolder>() {
 
 
@@ -31,9 +31,8 @@ class Adapter(private val context: Context,
     override fun onBindViewHolder(holder: Adapter.MyViewHolder, position: Int) {
 
         val profile = profileList[position]
-        holder.profileName.text = profile["name"].toString()
-        holder.profileRole.text = profile["role"].toString()
-
+        holder.profileName.text = profile["name"]?.toString() ?: "No Name"
+        holder.profileRole.text = profile["role"]?.toString() ?: "No Role"
 
         holder.itemView.setOnClickListener {
             val profileId = profile["id"].toString()
@@ -41,7 +40,6 @@ class Adapter(private val context: Context,
             val role = profile["role"].toString()
             val userId = userId
             onProfileClickListener.onProfileClick(userId,profileId, pin, role)
-//            verifyPIN(profile)
 
         }
 
@@ -52,6 +50,12 @@ class Adapter(private val context: Context,
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val profileName : TextView = itemView.findViewById(R.id.profile_name)
         val profileRole : TextView = itemView.findViewById(R.id.profile_role)
+    }
+
+    fun updateProfiles(newProfiles: List<Map<String, Any>>) {
+        this.profileList = newProfiles
+        notifyDataSetChanged()
+
     }
 
 
