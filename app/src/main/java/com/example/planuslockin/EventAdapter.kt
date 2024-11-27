@@ -63,7 +63,8 @@ class EventAdapter(private var eventList: List<ChildEvent>) : RecyclerView.Adapt
             holder.editEventBtn.setOnClickListener{
                 val context = holder.itemView.context
                 val intent = Intent(context, EditEventsActivity::class.java)
-                intent.putExtra("event",event) // Pass the event object
+                val documentId=event.id
+                intent.putExtra("documentID",documentId) // Pass the event object
                 context.startActivity(intent)
             }
 

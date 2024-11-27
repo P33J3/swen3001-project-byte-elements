@@ -8,6 +8,7 @@ import java.util.Date
 import java.util.Locale
 
 class ChildEvent: Serializable {
+    var id: String? = null
     var title: String? = null
     var date: Date? = null  //yyyy-MM-dd
     var time: String? = null
@@ -17,9 +18,10 @@ class ChildEvent: Serializable {
     var shareEvent = false
 
     constructor(
-         title: String?, date: String, time: String?, location: String?,
+        id:String?, title: String?, date: String, time: String?, location: String?,
         isIndoors: Boolean, isOnline: Boolean, shareEvent: Boolean
     ) {
+        this.id= id
         this.title = title
         this.date = parseDate(date) ?: Date() // Use default date if invalid
         this.time = time
@@ -29,7 +31,7 @@ class ChildEvent: Serializable {
         this.shareEvent = shareEvent
     }
 
-    constructor() : this(null, "", null, null, false, false, false)
+    constructor() : this(null,null, "", null, null, false, false, false)
 
     // Add a custom toString() method to log the content properly
     override fun toString(): String {
@@ -62,6 +64,7 @@ class ChildEvent: Serializable {
 
     // Function to convert Firestore Timestamp to Date
     fun fromFirestore(document: DocumentSnapshot): ChildEvent {
+        val id = document.id //generated id from firebase
         val title = document.getString("title")
         val time = document.getString("time")
         val location = document.getString("location")
@@ -77,7 +80,7 @@ class ChildEvent: Serializable {
             ""  // Return an empty string or use a default value if missing
         }
 
-        return ChildEvent(title, dateString, time, location, isIndoors, isOnline, shareEvent)
+        return ChildEvent(id,title, dateString, time, location, isIndoors, isOnline, shareEvent)
     }
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
