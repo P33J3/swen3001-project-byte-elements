@@ -12,7 +12,12 @@ import java.util.Locale
 class EventAdapter(private var eventList: List<ChildEvent>) : RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
 
     // Track which events are expanded (true means expanded, false means collapsed)
-    private val expandedState: BooleanArray = BooleanArray(eventList.size)
+    private var expandedState: BooleanArray = BooleanArray(eventList.size)
+
+    init {
+        // Initialize expandedState based on the eventList size
+        expandedState = BooleanArray(eventList.size)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.event_card, parent, false)
@@ -44,8 +49,8 @@ class EventAdapter(private var eventList: List<ChildEvent>) : RecyclerView.Adapt
             holder.checkKids.isChecked = event.shareEvent
 
             // Handle expanding/collapsing the details layout
-//            val isExpanded = expandedState[position]
-//            holder.expandableLayout.visibility = if (isExpanded) View.VISIBLE else View.GONE
+            val isExpanded = expandedState[position]
+            holder.expandableLayout.visibility = if (isExpanded) View.VISIBLE else View.GONE
 
             // Toggle the expansion state on click
             holder.itemView.setOnClickListener {
@@ -61,6 +66,7 @@ class EventAdapter(private var eventList: List<ChildEvent>) : RecyclerView.Adapt
 
     fun updateEvents(newEvents: List<ChildEvent>) {
         eventList = newEvents
+        expandedState = BooleanArray(eventList.size) // Re-initialize expandedState based on new list size
         notifyDataSetChanged()
     }
 
