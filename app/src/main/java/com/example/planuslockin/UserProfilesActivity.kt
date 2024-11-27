@@ -129,8 +129,8 @@ class UserProfilesActivity : AppCompatActivity() {
                     saveUserData(userId, profileId)
                     // If correct, start the appropriate activity
                     if (role == "Parent") {
-//                    val intent = Intent(context, ParentEventsActivity::class.java)
-//                    context.startActivity(intent)
+                        val intent = Intent(this, ParentEventActivity::class.java)
+                        this.startActivity(intent)
                     } else if (role == "Child") {
                         val intent = Intent(this, ChildEventsActivity::class.java)
                         this.startActivity(intent)
