@@ -37,7 +37,7 @@ class ChildEventsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_child_events)
-        adapter = EventAdapter(eventList)
+        adapter = EventAdapter(this,eventList)
 
         firebaseAuth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
@@ -72,7 +72,7 @@ class ChildEventsActivity : AppCompatActivity() {
 
 
 
-        adapter = EventAdapter(eventList)
+        adapter = EventAdapter(this,eventList)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.setHasFixedSize(true)
@@ -160,9 +160,9 @@ class ChildEventsActivity : AppCompatActivity() {
                     for (document in result) {
 
                         // Log the raw document data to see what we're getting from Firestore
-//                        Log.d("FirestoreData", "Document ID: ${document.id}")
-//                        Log.d("FirestoreData", "Document Data: ${document.data}")
-
+                        Log.d("FirestoreData", "Document ID: ${document.id}")
+                        Log.d("FirestoreData", "Document Data: ${document.data}")
+                        document.data["id"]= document.id
 //                        val event = document.toObject(ChildEvent::class.java)
                         val event = ChildEvent().fromFirestore(document)
                         fetchedEvents.add(event)

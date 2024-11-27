@@ -29,10 +29,12 @@
                 android:orientation="horizontal">
 
                 <!-- Day Number -->
-                <TextView
+                <EditText
                     android:id="@+id/eventDay"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:hint="Enter Event Day"
+                    android:inputType="text"
                     android:background="@drawable/square_background"
                     android:gravity="center"
                     android:text=""
@@ -43,11 +45,10 @@
                 <!-- Event Title -->
                 <EditText
                     android:id="@+id/etEventTitle"
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:hint="Enter Event Title"
+                    android:layout_width="match_parent"
+                    android:layout_height="72dp"
+                    android:hint= "Enter event title"
+                    android:inputType="text"
                     android:paddingStart="16dp"
                     android:textColor="#000000"
                     android:textSize="18sp" />
@@ -76,13 +77,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
+
                         android:text="Date:"
                         android:textStyle="bold" />
 
                     <EditText
                         android:id="@+id/etEventDate"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:hint="Enter Event Date"
+                        android:inputType="date"
                         android:layout_height="48dp"
                         android:layout_marginEnd="8dp"
                         android:layout_weight="1"
@@ -117,6 +120,7 @@
                     <EditText
                         android:id="@+id/etEventTime"
                         android:hint="Enter Event Time"
+                        android:inputType="time"
                         android:layout_width="0dp"
                         android:layout_height="48dp"
                         android:layout_weight="1"
@@ -150,7 +154,8 @@
                     <EditText
                         android:id="@+id/etEventLocation"
                         android:hint="Enter Event Location"
-                        android:layout_width="wrap_content"
+                        android:inputType="text"
+                        android:layout_width="0dp"
                         android:layout_height="48dp"
                         android:layout_weight="1"
                         android:gravity="center"/>
@@ -229,8 +234,8 @@
                     <!-- Save Button -->
                     <Button
                         android:id="@+id/btnSaveEvent"
-                        android:layout_width="366dp"
-                        android:layout_height="wrap_content"
+                        android:layout_width="70dp"
+                        android:layout_height="48dp"
                         android:text="Save Changes" />
 
                 </LinearLayout>

@@ -35,7 +35,7 @@ class ChildEvent: Serializable {
 
     // Add a custom toString() method to log the content properly
     override fun toString(): String {
-        return "ChildEvent(title='$title', time='$time', location='$location', " +
+        return "ChildEvent(id=$id,title='$title', time='$time', location='$location', " +
                 "date=$date, indoors=$isIndoors, online=$isOnline, shareEvent=$shareEvent)"
     }
 
