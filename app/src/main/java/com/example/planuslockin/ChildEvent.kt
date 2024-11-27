@@ -1,12 +1,13 @@
 package com.example.planuslockin
 
 import com.google.firebase.firestore.DocumentSnapshot
+import java.io.Serializable
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-class ChildEvent {
+class ChildEvent: Serializable {
     var title: String? = null
     var date: Date? = null  //yyyy-MM-dd
     var time: String? = null

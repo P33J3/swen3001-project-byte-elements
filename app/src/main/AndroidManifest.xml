@@ -21,6 +21,10 @@
             android:exported="false"
             android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity
+        android:name=".EditEventsActivity"
+        android:exported="false"
+        android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity
             android:name=".AddChildEvent"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
@@ -57,10 +61,7 @@
             android:name=".SignUpActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity
-            android:name=".EditEventsActivity"
-            android:exported="false"
-            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+
         <activity
             android:name=".MainActivity"
             android:exported="false"

@@ -24,7 +24,6 @@ class ChildEventsActivity : AppCompatActivity() {
 //    val fetchedEvents = ArrayList<ChildEvent>()
     lateinit var adapter: EventAdapter
     lateinit var add_event_button: Button
-
     lateinit var selectedDate: TextView
     lateinit var btnOpenCalendar: Button
 
