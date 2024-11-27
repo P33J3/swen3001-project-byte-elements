@@ -73,7 +73,7 @@ class UserProfilesActivity : AppCompatActivity() {
                 }
                 displayProfiles()
                 // Log the list of profiles fetched
-                Log.d("FirestoreData", "Fetched Profiles: ${profiles.joinToString()}")
+//                Log.d("FirestoreData", "Fetched Profiles: ${profiles.joinToString()}")
             }
             .addOnFailureListener {
                 Toast.makeText(this, "Failed to fetch profiles", Toast.LENGTH_SHORT).show()
@@ -84,7 +84,7 @@ class UserProfilesActivity : AppCompatActivity() {
     private fun displayProfiles() {
         val userId = firebaseAuth.currentUser?.uid
         // Log the profiles list before passing to the adapter
-        Log.d("UserProfiles", "Profiles to display: $profiles")
+//        Log.d("UserProfiles", "Profiles to display: $profiles")
         val adapter = userId?.let { Adapter(this, profiles, this, it) }
         recylcerView.adapter = adapter
         adapter?.updateProfiles(profiles)
@@ -112,7 +112,7 @@ class UserProfilesActivity : AppCompatActivity() {
 
         pinAlert.setPositiveButton("OK") { dialog, _ ->
             val enteredPin = pinEditText.text.toString()
-            Log.d("FirestoreData", "VerifyPIN Function - $profileId")
+//            Log.d("FirestoreData", "VerifyPIN Function - $profileId")
 
             // Check if the entered pin is empty
             if (enteredPin.isEmpty()) {
