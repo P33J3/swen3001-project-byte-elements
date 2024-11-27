@@ -12,7 +12,7 @@ import java.text.SimpleDateFormat
 import java.util.Locale
 
 
-class EventAdapter(private var eventList: List<ChildEvent>) : RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
+class EventAdapter(private val activity: ChildEventsActivity,private var eventList: List<ChildEvent>) : RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
 
     // Track which events are expanded (true means expanded, false means collapsed)
     private val expandedState: BooleanArray = BooleanArray(eventList.size)
@@ -59,6 +59,7 @@ class EventAdapter(private var eventList: List<ChildEvent>) : RecyclerView.Adapt
                 val context = holder.itemView.context
                 val intent = Intent(context, EditEventsActivity::class.java)
                 val documentId=event.id
+                Log.d("EventAdapter","passing documentID: ${event.id}")
                 intent.putExtra("documentID",documentId) // Pass the event object
                 context.startActivity(intent)
             }

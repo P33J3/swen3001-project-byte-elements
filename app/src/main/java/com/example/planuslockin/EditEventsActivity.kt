@@ -3,6 +3,7 @@ package com.example.planuslockin
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
@@ -63,7 +64,8 @@ class EditEventsActivity : AppCompatActivity() {
             checkYes.isChecked = event.shareEvent
             checkNo.isChecked = !checkYes.isChecked
         }*/
-        documentId = intent.getStringExtra("documentId")
+        documentId = intent.getStringExtra("documentID")
+        Log.d("EditEventsActivity","Document ID : $documentId")
 
         if (documentId != null) {
             db.collection("users")
@@ -75,7 +77,8 @@ class EditEventsActivity : AppCompatActivity() {
                 .get()
                 .addOnSuccessListener { document ->
                     if (document.exists()) {
-                        val event = document.toObject(ChildEvent::class.java)
+                        //val event = document.toObject(ChildEvent::class.java)
+                        val event= ChildEvent().fromFirestore(document)
 
                         if (event != null) {
                             // Pre-fill the fields with the existing event data
