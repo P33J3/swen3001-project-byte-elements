@@ -61,8 +61,9 @@ class ParentEventActivity : AppCompatActivity() {
                     eventList.clear()  // Clear the existing events
                     for (document in result) {
                         val event = document.toObject(ChildEvent::class.java)
+                        eventList.add(event)
 //                        if (event.date == selectedDate) {
-                            eventList.add(event)
+
 //                        }
                     }
                     // Notify the adapter that the data has changed
