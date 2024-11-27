@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "381481690906",
+    "project_id": "plan-us-178ad",
+    "storage_bucket": "plan-us-178ad.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:381481690906:android:e923708d9801afb62aeea3",
+        "android_client_info": {
+          "package_name": "com.example.planuslockin"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADS6_tp1v122lBNim0LW9sejVvmlCgGfI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:381481690906:android:ee763920989b1bc72aeea3",
+        "android_client_info": {
+          "package_name": "com.example.swen3001groupproject"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADS6_tp1v122lBNim0LW9sejVvmlCgGfI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

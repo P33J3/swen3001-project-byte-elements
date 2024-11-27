@@ -35,7 +35,6 @@
                     android:layout_height="40dp"
                     android:background="@drawable/square_background"
                     android:gravity="center"
-                    android:text="10"
                     android:textColor="@android:color/black"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -60,14 +59,14 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:paddingTop="8dp"
-                android:visibility="gone">
+                android:visibility="visible">
 
                 <!-- Date Row -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:gravity="center_vertical"
+                    android:orientation="horizontal"
                     android:paddingTop="4dp"
                     android:paddingBottom="4dp">
 
@@ -75,10 +74,9 @@
                         android:id="@+id/tvDateLabel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Date:"
-                        android:textStyle="bold"
                         android:layout_marginEnd="8dp"
-                        />
+                        android:text="Date:"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/eventDate"
@@ -86,9 +84,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
                         android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="January 10, 2024"
-                         />
+                        android:gravity="center" />
 
                     <ImageView
                         android:id="@+id/tvDateIcon"
@@ -104,25 +100,24 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:gravity="center_vertical"
+                    android:orientation="horizontal"
                     android:paddingTop="4dp"
                     android:paddingBottom="4dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
                         android:text="Time:"
-                        android:textStyle="bold"
-                        android:layout_marginEnd="8dp" />
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/eventTime"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="3:00 PM" />
+                        android:gravity="center" />
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -136,91 +131,69 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:gravity="center_vertical"
+                    android:orientation="horizontal"
                     android:paddingTop="4dp"
                     android:paddingBottom="4dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
                         android:text="Location:"
-                        android:textStyle="bold"
-                        android:layout_marginEnd="8dp" />
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/eventLocation"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="SLT2, UWI Mona" />
+                        android:gravity="center"/>
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:contentDescription="Location Icon"
                         android:src="@drawable/ic_location"
-                    android:contentDescription="Location Icon"
                         app:tint="@color/black" />
                 </LinearLayout>
 
-                <!-- Event Type Row (Checkboxes) -->
-                <LinearLayout
-                    android:id="@+id/eventTypeLayout"
-                    android:layout_width="match_parent"
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/eventTypeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:minHeight="48dp"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/cardCheckIndoors"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:gravity="center"
-                    android:orientation="horizontal">
+                    android:minHeight="48dp"
+                    android:padding="8dp"
+                    android:text="Indoors" />
 
-                    <CheckBox
-                        android:id="@+id/checkIndoors"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Indoors" />
 
-                    <CheckBox
-                        android:id="@+id/checkOutdoors"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:text="Outdoors" />
-
-                    <CheckBox
-                        android:id="@+id/checkOnline"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:text="Online" />
-                </LinearLayout>
-
-                <!-- Share With Kids Row -->
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <CheckBox
+                    android:id="@+id/cardCheckOnline"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:gravity="center"
-                    android:orientation="horizontal">
+                    android:layout_marginStart="16dp"
+                    android:minHeight="48dp"
+                    android:padding="5dp"
+                    android:text="Online" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Share with kids?" />
-
-                    <CheckBox
-                        android:id="@+id/checkYes"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:text="Yes" />
-
-                    <CheckBox
-                        android:id="@+id/checkNo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:text="No" />
-                </LinearLayout>
+                <CheckBox
+                    android:id="@+id/checkKids"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:minHeight="48dp"
+                    android:padding="5dp"
+                    android:text="Share Event" />
             </LinearLayout>
 
         </LinearLayout>

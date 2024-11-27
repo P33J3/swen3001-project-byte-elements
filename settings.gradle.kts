@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "SWEN3001 Group Project"
+rootProject.name = "PlanUs LockIn"
 include(":app")
  

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SWEN3001 Group Project</string>
+    <string name="app_name">PlanUs LockIn</string>
     <string name="button">+</string>
     <string name="add_button">Add</string>
     <string name="title">Title</string>
@@ -7,4 +7,6 @@
     <string name="date">Date</string>
     <string name="time_icon">Time Icon</string>
     <string name="google_maps_api_key">AIzaSyBoiAEMiskN7S-wM6at6_xhE5C8UKs-2KE</string>
+    <string name="drop_menu">Dropdown Menu</string>
+    <string name="select">Select Item</string>
 </resources>
