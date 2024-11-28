@@ -13,9 +13,13 @@
         android:theme="@style/Theme.PlanUsLockIn"
         tools:targetApi="31">
         <activity
+            android:name=".ParentDashboard"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:exported="false" />
+        <activity
             android:name=".AddProfileActivity"
             android:exported="false"
-            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
         android:name=".DeleteEvents"
         android:exported="false"
@@ -23,7 +27,7 @@
         <activity
             android:name=".UserProfilesActivity"
             android:exported="false"
-            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
         android:name=".EditEventsActivity"
         android:exported="false"
@@ -42,6 +46,7 @@
             android:name=".SignInActivity"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.NoActionBar">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -51,15 +56,6 @@
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
-        </activity>
-        <activity
-            android:name=".ParentEventActivity"
-            android:exported="false"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
-            <intent-filter>
-                <action android:name="com.example.planuslockin.DEBUG_ACTION_1" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".SignUpActivity"

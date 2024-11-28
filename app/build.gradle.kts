@@ -82,6 +82,7 @@ dependencies {
     implementation(libs.firebase.auth)
     implementation(libs.androidx.foundation.layout.android)
     implementation(libs.firebase.firestore)
+    implementation(libs.androidx.coordinatorlayout)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
