@@ -13,25 +13,29 @@
         android:theme="@style/Theme.PlanUsLockIn"
         tools:targetApi="31">
         <activity
+            android:name=".ParentEventActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity
             android:name=".ParentDashboard"
-            android:theme="@style/Theme.AppCompat.NoActionBar"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".AddProfileActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-        android:name=".DeleteEvents"
-        android:exported="false"
-        android:theme="@style/Theme.AppCompat.NoActionBar"/>
+            android:name=".DeleteEvents"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".UserProfilesActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-        android:name=".EditEventsActivity"
-        android:exported="false"
-        android:theme="@style/Theme.AppCompat.NoActionBar"/>
+            android:name=".EditEventsActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".AddChildEvent"
             android:exported="false"
@@ -40,13 +44,10 @@
             android:name=".ChildEventsActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
-
-
         <activity
             android:name=".SignInActivity"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.NoActionBar">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -61,7 +62,6 @@
             android:name=".SignUpActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
-
         <activity
             android:name=".MainActivity"
             android:exported="false"
