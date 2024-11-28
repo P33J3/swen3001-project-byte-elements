@@ -78,4 +78,15 @@ class ChildEvent {
 
         return ChildEvent(title, dateString, time, location, isIndoors, isOnline, shareEvent)
     }
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is ChildEvent) return false
+        return title == other.title && date == other.date
+    }
+
+    override fun hashCode(): Int {
+        var result = title?.hashCode() ?: 0
+        result = 31 * result + (date?.hashCode() ?: 0)
+        return result
+    }
 }
