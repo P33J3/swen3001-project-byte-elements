@@ -53,7 +53,7 @@ class CalendarFragment : Fragment() {
 
         recyclerView = binding.recyclerView
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        adapter = EventAdapter(eventList)
+        adapter = EventAdapter(ChildEventsActivity(), eventList)
         recyclerView.adapter = adapter
     }
 
