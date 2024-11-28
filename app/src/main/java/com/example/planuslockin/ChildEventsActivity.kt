@@ -65,25 +65,6 @@ class ChildEventsActivity : AppCompatActivity() {
         }
 
 
-
-
-        // Dummy event data
-//        eventList.add(ChildEvent( "Midsemester Exam", "2024-01-10", "3:00PM", "SLT2, UWI Mona", true, false, false))
-//        eventList.add(ChildEvent( "Dad's Birthday Party", "2024-01-13", "5:00PM", "Home", false, true, false))
-//        eventList.add(ChildEvent( "Track Meet", "2024-01-23", "10:00AM", "National Stadium", false, true, false))
-
-        //val intent2 = intent
-        //val eventTitle = intent2.getStringExtra("eventTitle")
-        //val eventDate = intent2.getStringExtra("eventDate")
-        //val eventTime = intent2.getStringExtra("eventTime")
-        //val eventLocation = intent2.getStringExtra("eventLocation")
-        //val indoor = intent2.getStringExtra("indoor").toBoolean()
-        //val outdoor = intent2.getStringExtra("outdoor").toBoolean()
-        //val online = intent2.getStringExtra("online").toBoolean()
-        //eventList.add(ChildEvent(17, eventTitle, eventDate, eventTime, eventLocation, indoor, outdoor, online, true))
-
-
-
         adapter = EventAdapter(eventList)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)

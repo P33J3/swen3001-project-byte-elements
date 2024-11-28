@@ -1,5 +1,6 @@
 package com.example.planuslockin
 
+import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Context
 import android.content.Intent
@@ -46,14 +47,6 @@ class AddChildEvent : AppCompatActivity() {
         location = findViewById(R.id.addEventLocation)
         shareEvent = findViewById(R.id.addKids)
 
-//        val eventTitle = title.text.toString()
-//        val eventDate = date.text.toString()
-//        val eventTime = time.text.toString()
-//        val eventLocation = location.text.toString()
-//        val indoor = indoorCheckbox.isChecked
-//        val online = onlineCheckbox.isChecked
-//        val share = shareWithKids.isChecked
-
         // Retrieve the selected date passed from the previous activity
         val selectedDateMilliseconds = intent.getLongExtra("SELECTED_DATE", -1L)
 
@@ -68,6 +61,20 @@ class AddChildEvent : AppCompatActivity() {
         } else {
             // Handle the case where the date wasn't passed correctly
             Toast.makeText(this, "No date received", Toast.LENGTH_SHORT).show()
+        }
+
+        date.setOnClickListener{
+            val calendar = Calendar.getInstance()
+            val year = calendar.get(Calendar.YEAR)
+            val month = calendar.get(Calendar.MONTH)
+            val day = calendar.get(Calendar.DAY_OF_MONTH)
+
+            val datePickerDialog = DatePickerDialog(this, { _, newYear, newMonth, newDay ->
+                val changedDate = "$newYear/${newMonth + 1}/$newDay"
+                val finalDate = changedDate.replace("/", "-")
+                date.setText(finalDate)
+            },year,month,day)
+            datePickerDialog.show()
         }
 
         time.setOnClickListener {
