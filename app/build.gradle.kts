@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.google.gms.google.services)
 }
 
+
 android {
     namespace = "com.example.planuslockin"
     compileSdk = 34
@@ -18,6 +19,13 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
+        }
+    }
+    configurations.all {
+        resolutionStrategy {
+            force ("androidx.core:core:1.13.1")
+            force ("androidx.appcompat:appcompat:1.6.0")  // Ensure androidx.appcompat is used
+            force ("com.google.android.material:material:1.9.0")// Force  use of the latest androidx.core version
         }
     }
 
@@ -53,6 +61,11 @@ android {
 
 dependencies {
 
+    implementation("com.github.prolificinteractive:material-calendarview:2.0.0") {
+        exclude ( "com.android.support",  "support-compat")
+    }
+    implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("androidx.recyclerview:recyclerview:1.3.0")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -71,6 +84,7 @@ dependencies {
     implementation(libs.firebase.auth)
     implementation(libs.androidx.foundation.layout.android)
     implementation(libs.firebase.firestore)
+    implementation(libs.androidx.coordinatorlayout)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

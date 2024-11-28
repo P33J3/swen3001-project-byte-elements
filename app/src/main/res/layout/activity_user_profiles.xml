@@ -18,6 +18,7 @@
     android:layout_marginTop="80dp"/>
 
 <view class="androidx.recyclerview.widget.RecyclerView"
+    android:layout_marginTop="85dp"
     android:id="@+id/recyclerView"
     android:layout_width="match_parent"
     android:layout_height="400dp"
@@ -28,7 +29,6 @@
     android:id="@+id/addprofileredirect"
     android:layout_width="150dp"
     android:layout_height="50dp"
-    android:layout_marginTop="35dp"
     android:text="Add Profile"
     android:layout_gravity="center"
     app:cornerRadius="50dp" />
