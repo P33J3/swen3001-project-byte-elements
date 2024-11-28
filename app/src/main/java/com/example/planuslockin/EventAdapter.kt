@@ -68,7 +68,15 @@ class EventAdapter(private val activity: ChildEventsActivity,private var eventLi
                 intent.putExtra("documentID",documentId) // Pass the event object
                 context.startActivity(intent)
             }
+            holder.deleteEventBtn.setOnClickListener{
+                val context = holder.itemView.context
+                val intent = Intent(context, DeleteEvents::class.java)
+                val documentId=event.id
+                Log.d("EventAdapter","passing documentID: ${event.id}")
+                intent.putExtra("documentID",documentId) // Pass the event object
+                context.startActivity(intent)
 
+            }
         }
     }
 
@@ -95,6 +103,7 @@ class EventAdapter(private val activity: ChildEventsActivity,private var eventLi
 
         val checkKids: CheckBox = itemView.findViewById(R.id.checkKids)
         val editEventBtn: Button =itemView.findViewById(R.id.editbtn)
+        val deleteEventBtn: Button=itemView.findViewById(R.id.deletebtn)
         val expandableLayout: View = itemView.findViewById(R.id.expandableLayout)
     }
 }
