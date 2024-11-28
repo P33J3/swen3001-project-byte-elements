@@ -1,5 +1,6 @@
 package com.example.planuslockin
 
+import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Context
 import android.content.Intent
@@ -46,14 +47,6 @@ class AddChildEvent : AppCompatActivity() {
         location = findViewById(R.id.addEventLocation)
         shareEvent = findViewById(R.id.addKids)
 
-//        val eventTitle = title.text.toString()
-//        val eventDate = date.text.toString()
-//        val eventTime = time.text.toString()
-//        val eventLocation = location.text.toString()
-//        val indoor = indoorCheckbox.isChecked
-//        val online = onlineCheckbox.isChecked
-//        val share = shareWithKids.isChecked
-
         // Retrieve the selected date passed from the previous activity
         val selectedDateMilliseconds = intent.getLongExtra("SELECTED_DATE", -1L)
 
@@ -68,6 +61,20 @@ class AddChildEvent : AppCompatActivity() {
         } else {
             // Handle the case where the date wasn't passed correctly
             Toast.makeText(this, "No date received", Toast.LENGTH_SHORT).show()
+        }
+
+        date.setOnClickListener{
+            val calendar = Calendar.getInstance()
+            val year = calendar.get(Calendar.YEAR)
+            val month = calendar.get(Calendar.MONTH)
+            val day = calendar.get(Calendar.DAY_OF_MONTH)
+
+            val datePickerDialog = DatePickerDialog(this, { _, newYear, newMonth, newDay ->
+                val changedDate = "$newYear/${newMonth + 1}/$newDay"
+                val finalDate = changedDate.replace("/", "-")
+                date.setText(finalDate)
+                },year,month,day)
+            datePickerDialog.show()
         }
 
         time.setOnClickListener {
@@ -93,9 +100,6 @@ class AddChildEvent : AppCompatActivity() {
             if (userData != null) {
                 val (userId, profileId) = userData
 
-//                val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-//                val formattedDate = dateFormat.format(date.text.toString())
-
                 val childEvent = ChildEvent(
                     title = title.text.toString(),
                     date = date.text.toString(),
@@ -119,12 +123,6 @@ class AddChildEvent : AppCompatActivity() {
 
 
             val intent = Intent(this, ChildEventsActivity::class.java)
-//            intent.putExtra("eventTitle", eventTitle)
-//            intent.putExtra("eventDate", eventDate)
-//            intent.putExtra("eventTime", eventTime)
-//            intent.putExtra("eventLocation", eventLocation)
-//            intent.putExtra("indoor", indoor)
-//            intent.putExtra("online", online)
             startActivity(intent)
             this.finish()
         }
@@ -142,4 +140,5 @@ class AddChildEvent : AppCompatActivity() {
             null // or handle the case where data is not available
         }
     }
+
 }
