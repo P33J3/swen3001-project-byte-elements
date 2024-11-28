@@ -1,5 +1,7 @@
 package com.example.planuslockin
 
+import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -11,8 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.firestore.FirebaseFirestore
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
-
-
+import java.util.Calendar
 
 
 class EditEventsActivity : AppCompatActivity() {
@@ -100,6 +101,35 @@ class EditEventsActivity : AppCompatActivity() {
                     Toast.makeText(this, "Failed to fetch event: ${e.message}", Toast.LENGTH_SHORT).show()
                 }
         }
+
+        etEventDate.setOnClickListener{
+            val calendar = Calendar.getInstance()
+            val year = calendar.get(Calendar.YEAR)
+            val month = calendar.get(Calendar.MONTH)
+            val day = calendar.get(Calendar.DAY_OF_MONTH)
+
+            val datePickerDialog = DatePickerDialog(this, { _, newYear, newMonth, newDay ->
+                val changedDate = "$newYear/${newMonth + 1}/$newDay"
+                val finalDate = changedDate.replace("/", "-")
+                etEventDate.setText(finalDate)
+            },year,month,day)
+            datePickerDialog.show()
+        }
+
+        etEventTime.setOnClickListener{
+            val calendar = Calendar.getInstance()
+            val hour = calendar.get(Calendar.HOUR_OF_DAY)
+            val minute = calendar.get(Calendar.MINUTE)
+
+            val timePickerDialog = TimePickerDialog(this, { _, selectedHour, selectedMinute ->
+                // Update the EditText with the selected time
+                val formattedTime = String.format("%02d:%02d", selectedHour, selectedMinute)
+                etEventTime.setText(formattedTime)
+            }, hour, minute, true) // 24-hour format (true), false for 12-hour
+
+            timePickerDialog.show()
+        }
+
         // Save button click listener to update the event
         btnSaveEvent.setOnClickListener {
             val userData = getUserData()

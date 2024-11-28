@@ -132,7 +132,7 @@ class UserProfilesActivity : AppCompatActivity() {
                         val intent = Intent(this, ParentDashboard::class.java)
                         this.startActivity(intent)
                     } else if (role == "Child") {
-                        val intent = Intent(this, ChildDashboard::class.java)
+                        val intent = Intent(this, ChildEventsActivity::class.java)
                         this.startActivity(intent)
                     }
                 } else {
