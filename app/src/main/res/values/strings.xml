@@ -8,4 +8,7 @@
     <string name="time_icon">Time Icon</string>
     <string name="drop_menu">Dropdown Menu</string>
     <string name="select">Select Item</string>
+    <string name="are_you_sure_you_want_to_delete_event">Are you sure you want to delete event?</string>
+    <string name="cancel">Cancel</string>
+    <string name="delete">Delete</string>
 </resources>
