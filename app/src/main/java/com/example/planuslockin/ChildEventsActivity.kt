@@ -38,7 +38,7 @@ class ChildEventsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_child_events)
-        adapter = EventAdapter(eventList)
+        adapter = EventAdapter(this,eventList)
 
         firebaseAuth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
@@ -65,21 +65,25 @@ class ChildEventsActivity : AppCompatActivity() {
         }
 
 
-        adapter = EventAdapter(eventList)
+        adapter = EventAdapter(this,eventList)
+
+        // Dummy event data
+//        eventList.add(ChildEvent( "Midsemester Exam", "2024-01-10", "3:00PM", "SLT2, UWI Mona", true, false, false))
+//        eventList.add(ChildEvent( "Dad's Birthday Party", "2024-01-13", "5:00PM", "Home", false, true, false))
+//        eventList.add(ChildEvent( "Track Meet", "2024-01-23", "10:00AM", "National Stadium", false, true, false))
+
+
+
+        adapter = EventAdapter(this,eventList)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.setHasFixedSize(true)
 
         fetchCalendarEvents()
 
-        // Now update the eventList in the adapter
-//        eventList.clear()  // Clear the existing events
-//        eventList.addAll(fetchedEvents)  // Add the fetched events
-
-
         // Notify the adapter that the data has changed
         adapter.notifyDataSetChanged()
-        Log.d("FirestoreData", "Events List: ${eventList.size}")
+//        Log.d("FirestoreData", "Events List: ${eventList.size}")
     }
 
     private fun showDatePickerDialog() {
@@ -128,7 +132,7 @@ class ChildEventsActivity : AppCompatActivity() {
         return if (userId != null && profileId != null) {
             Pair(userId, profileId)
         } else {
-            null // or handle the case where data is not available
+            null
         }
     }
 
@@ -143,8 +147,7 @@ class ChildEventsActivity : AppCompatActivity() {
         val userData = getUserData()
         if (userData != null) {
             val (userId, profileId) = userData
-            Log.d("FirestoreData", "User ID: $userId, ProfileID: $profileId")
-            // Now use the userId and profileId to query Firebase or make network requests
+//            Log.d("FirestoreData", "User ID: $userId, ProfileID: $profileId")
             db.collection("users")
                 .document(userId)
                 .collection("profiles")
@@ -161,14 +164,14 @@ class ChildEventsActivity : AppCompatActivity() {
                         // Log the raw document data to see what we're getting from Firestore
                         Log.d("FirestoreData", "Document ID: ${document.id}")
                         Log.d("FirestoreData", "Document Data: ${document.data}")
-
+                        document.data["id"]= document.id
 //                        val event = document.toObject(ChildEvent::class.java)
                         val event = ChildEvent().fromFirestore(document)
                         fetchedEvents.add(event)
                     }
 
                     // Log the list of events fetched
-                    Log.d("FirestoreData", "Fetched Events: ${fetchedEvents.joinToString()}")
+//                    Log.d("FirestoreData", "Fetched Events: ${fetchedEvents.joinToString()}")
 
 //                    // Now update the eventList in the adapter
                     eventList.clear()  // Clear the existing events

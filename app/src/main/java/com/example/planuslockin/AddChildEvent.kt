@@ -28,6 +28,7 @@ class AddChildEvent : AppCompatActivity() {
     lateinit var time: EditText
     lateinit var location: EditText
     lateinit var shareEvent: CheckBox
+    private var eventID: String?= null
     private lateinit var db: FirebaseFirestore
 
 
@@ -104,6 +105,7 @@ class AddChildEvent : AppCompatActivity() {
 //                val formattedDate = dateFormat.format(date.text.toString())
 
                 val childEvent = ChildEvent(
+                    eventID,
                     title = title.text.toString(),
                     date = date.text.toString(),
                     time = time.text.toString(),
@@ -119,21 +121,28 @@ class AddChildEvent : AppCompatActivity() {
                     .document(profileId)
                     .collection("events")
                     .add(childEvent)
+                    .addOnSuccessListener { documentReference->
+                        val eventID= documentReference.id
+                        val intent = Intent(this, ChildEventsActivity::class.java)
+                        intent.putExtra("newEventId", eventID) // Pass the ID if necessary
+                        startActivity(intent)
+                        finish()
+                    }
             }
 
 
 
 
 
-            val intent = Intent(this, ChildEventsActivity::class.java)
+           // val intent = Intent(this, ChildEventsActivity::class.java)
 //            intent.putExtra("eventTitle", eventTitle)
 //            intent.putExtra("eventDate", eventDate)
 //            intent.putExtra("eventTime", eventTime)
 //            intent.putExtra("eventLocation", eventLocation)
 //            intent.putExtra("indoor", indoor)
 //            intent.putExtra("online", online)
-            startActivity(intent)
-            this.finish()
+           // startActivity(intent)
+           // this.finish()
         }
 
     }
