@@ -1,12 +1,14 @@
 package com.example.planuslockin
 
 import com.google.firebase.firestore.DocumentSnapshot
+import java.io.Serializable
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-class ChildEvent {
+class ChildEvent: Serializable {
+    var id: String? = null
     var title: String? = null
     var date: Date? = null  //yyyy-MM-dd
     var time: String? = null
@@ -16,9 +18,10 @@ class ChildEvent {
     var shareEvent = false
 
     constructor(
-         title: String?, date: String, time: String?, location: String?,
+        id:String?, title: String?, date: String, time: String?, location: String?,
         isIndoors: Boolean, isOnline: Boolean, shareEvent: Boolean
     ) {
+        this.id= id
         this.title = title
         this.date = parseDate(date) ?: Date() // Use default date if invalid
         this.time = time
@@ -28,11 +31,11 @@ class ChildEvent {
         this.shareEvent = shareEvent
     }
 
-    constructor() : this(null, "", null, null, false, false, false)
+    constructor() : this(null,null, "", null, null, false, false, false)
 
     // Add a custom toString() method to log the content properly
     override fun toString(): String {
-        return "ChildEvent(title='$title', time='$time', location='$location', " +
+        return "ChildEvent(id=$id,title='$title', time='$time', location='$location', " +
                 "date=$date, indoors=$isIndoors, online=$isOnline, shareEvent=$shareEvent)"
     }
 
@@ -61,6 +64,7 @@ class ChildEvent {
 
     // Function to convert Firestore Timestamp to Date
     fun fromFirestore(document: DocumentSnapshot): ChildEvent {
+        val id = document.id //generated id from firebase
         val title = document.getString("title")
         val time = document.getString("time")
         val location = document.getString("location")
@@ -76,6 +80,17 @@ class ChildEvent {
             ""  // Return an empty string or use a default value if missing
         }
 
-        return ChildEvent(title, dateString, time, location, isIndoors, isOnline, shareEvent)
+        return ChildEvent(id,title, dateString, time, location, isIndoors, isOnline, shareEvent)
+    }
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is ChildEvent) return false
+        return title == other.title && date == other.date
+    }
+
+    override fun hashCode(): Int {
+        var result = title?.hashCode() ?: 0
+        result = 31 * result + (date?.hashCode() ?: 0)
+        return result
     }
 }

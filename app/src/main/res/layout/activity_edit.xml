@@ -29,25 +29,27 @@
                 android:orientation="horizontal">
 
                 <!-- Day Number -->
-                <TextView
+                <EditText
                     android:id="@+id/eventDay"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:hint="Enter Event Day"
+                    android:inputType="text"
                     android:background="@drawable/square_background"
                     android:gravity="center"
+                    android:text=""
                     android:textColor="@android:color/black"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <!-- Event Title -->
-                <TextView
-                    android:id="@+id/eventTitle"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
+                <EditText
+                    android:id="@+id/etEventTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="72dp"
+                    android:hint= "Enter event title"
+                    android:inputType="text"
                     android:paddingStart="16dp"
-                    android:text="Midsemester Exam"
                     android:textColor="#000000"
                     android:textSize="18sp" />
             </LinearLayout>
@@ -75,13 +77,16 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
+
                         android:text="Date:"
                         android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/eventDate"
+                    <EditText
+                        android:id="@+id/etEventDate"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:hint="Enter Event Date"
+                        android:inputType="date"
+                        android:layout_height="48dp"
                         android:layout_marginEnd="8dp"
                         android:layout_weight="1"
                         android:gravity="center" />
@@ -109,15 +114,18 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
-                        android:text="Time:"
+                        android:text="Time"
                         android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/eventTime"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                    <EditText
+                        android:id="@+id/etEventTime"
+                        android:hint="Enter Event Time"
+                        android:inputType="time"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
                         android:layout_weight="1"
-                        android:gravity="center" />
+                        android:gravity="center"
+                        android:text=""/>
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -143,12 +151,14 @@
                         android:text="Location:"
                         android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/eventLocation"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                    <EditText
+                        android:id="@+id/etEventLocation"
+                        android:hint="Enter Event Location"
+                        android:inputType="text"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
                         android:layout_weight="1"
-                        android:gravity="center" />
+                        android:gravity="center"/>
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -158,66 +168,83 @@
                         app:tint="@color/black" />
                 </LinearLayout>
 
-            </LinearLayout>
+                <!-- Event Type Row (Checkboxes) -->
+                <LinearLayout
+                    android:id="@+id/eventTypeLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
-            <LinearLayout
-                android:id="@+id/eventTypeLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:gravity="center"
-                android:minHeight="48dp"
-                android:orientation="horizontal">
+                    <CheckBox
+                        android:id="@+id/checkIndoors"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:text="Indoors" />
 
-                <CheckBox
-                    android:id="@+id/cardCheckIndoors"
+                    <CheckBox
+                        android:id="@+id/checkOutdoors"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:layout_marginStart="16dp"
+                        android:text="Outdoors" />
+
+                    <CheckBox
+                        android:id="@+id/checkOnline"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:layout_marginStart="16dp"
+                        android:text="Online" />
+                </LinearLayout>
+
+                <!-- Share With Kids Row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Share with kids?" />
+
+                    <CheckBox
+                        android:id="@+id/checkYes"
+                        android:layout_width="68dp"
+                        android:layout_height="48dp"
+                        android:layout_marginStart="16dp"
+                        android:text="Yes" />
+
+                    <CheckBox
+                        android:id="@+id/checkNo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:layout_marginStart="16dp"
+                        android:text="No" />
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:minHeight="48dp"
-                    android:padding="8dp"
-                    android:text="Indoors" />
+                    android:paddingTop="20dp">
 
+                    <!-- Save Button -->
+                    <Button
+                        android:id="@+id/btnSaveEvent"
+                        android:layout_width="70dp"
+                        android:layout_height="48dp"
+                        android:text="Save Changes" />
 
-                <CheckBox
-                    android:id="@+id/cardCheckOnline"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:minHeight="48dp"
-                    android:padding="5dp"
-                    android:text="Online" />
-
-                <CheckBox
-                    android:id="@+id/checkKids"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:minHeight="48dp"
-                    android:padding="5dp"
-                    android:text="Share Event" />
+                </LinearLayout>
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:paddingStart="40dp"
-                android:layout_height="wrap_content">
-
-
-            <Button
-                android:id="@+id/editbtn"
-                android:layout_width="112dp"
-                android:layout_height="wrap_content"
-                android:text="Edit" />
-
-            <Button
-                android:id="@+id/deletebtn"
-                android:layout_width="112dp"
-                android:layout_height="wrap_content"
-                android:text="Delete" />
-            </LinearLayout>
-
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+

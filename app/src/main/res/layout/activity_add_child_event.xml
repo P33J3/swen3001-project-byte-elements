@@ -174,18 +174,17 @@
                 android:minHeight="48dp"
                 android:padding="5dp"
                 android:text="Online" />
-
-            <CheckBox
-                android:id="@+id/addKids"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:minHeight="48dp"
-                android:padding="5dp"
-                android:text="Share Event" />
         </LinearLayout>
 
 
+        <CheckBox
+            android:id="@+id/addKids"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="100dp"
+            android:minHeight="48dp"
+            android:padding="5dp"
+            android:text="Share Event" />
 
         <Button
             android:id="@+id/button2"
